@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/garyburd/redigo/redis"
 	"reflect"
+
+	"github.com/garyburd/redigo/redis"
 )
 
 /*****************************************************************
@@ -23,7 +24,7 @@ smembers(key) ：返回名称为key的set的所有元素
 srandmember(key) ：随机返回名称为key的set的一个元素
 ******************************************************************/
 func main() {
-	c, err := redis.Dial("tcp", "192.168.2.225:6379")
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")
 	if err != nil {
 		fmt.Println("redis connect failed", err.Error())
 	}
