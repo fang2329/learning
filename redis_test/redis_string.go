@@ -23,7 +23,7 @@ append(key, value)：名称为key的string的值附加value
 substr(key, start, end)：返回名称为key的string的value的子串
 *******************************************************************************/
 func main() {
-	c, err := redis.Dial("tcp", "192.168.2.225:6379")
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")
 	if err != nil {
 		fmt.Println("connect to redis err", err.Error())
 		return
@@ -34,7 +34,7 @@ func main() {
 	if err != nil{
 		fmt.Println("redis set failed",err.Error())
 	}
-	
+
 	myname,err := redis.String(c.Do("GET","myname"))
 	if err!= nil{
 		fmt.Println("redis get failed",err.Error())
@@ -65,7 +65,7 @@ func main() {
 	_,err = c.Do("SET","myage",10,"EX","10")
 	if nil != err{
 		fmt.Println("redis set failed",err.Error())
-	}	
+	}
 
 	isExist,err := redis.Bool(c.Do("EXISTS","myage"))
 	if err != nil{
@@ -82,7 +82,7 @@ func main() {
 		fmt.Println("get myage",myage)
 	}
 
-	
+
         isExist,err = redis.Bool(c.Do("EXISTS","myage"))
         if err != nil{
                 fmt.Println("error",err.Error())
@@ -93,8 +93,8 @@ func main() {
         _,err = c.Do("DEL","myname")
 	if err != nil{
 		fmt.Println("redis delete failed",err.Error())
-	}		
-	
+	}
+
 	myname,err = redis.String(c.Do("GET","myname"))
 	if err != nil{
 		fmt.Printf("redis get failed %s  delete success\n",err.Error())
@@ -106,7 +106,7 @@ func main() {
 	if err != nil{
 		fmt.Println("set myage failed",err.Error())
 	}
-	
+
 	myage,err = redis.String(c.Do("GET","myage"))
         if err == nil{
                 fmt.Println("before myage",myage)

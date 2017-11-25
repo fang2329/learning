@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/garyburd/redigo/redis"
 	"reflect"
+
+	"github.com/garyburd/redigo/redis"
 )
 
 /***********************************************************************
@@ -21,7 +22,7 @@ hgetall(key)：返回名称为key的hash中所有的键（field）及其对应�
 ************************************************************************/
 
 func main() {
-	c, err := redis.Dial("tcp", "192.168.2.225:6379")
+	c, err := redis.Dial("tcp", "127.0.0.1:6379")
 	if err != nil {
 		fmt.Println("redis connect failed", err.Error())
 	}
